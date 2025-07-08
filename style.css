@@ -1,0 +1,206 @@
+/* Definición de variables de color (Tema Claro por defecto) */
+:root {
+    --bg-color: #f0f0f0;
+    --app-bg-color: #ffffff;
+    --text-color: #1a1a1a;
+    --display-bg: #e9e9e9;
+    --button-bg: #fafafa;
+    --button-hover-bg: #e0e0e0;
+    --op-button-bg: #f0e1d0;
+    --op-button-hover-bg: #e6d1b9;
+    --equals-button-bg: #4caf50;
+    --equals-button-hover-bg: #45a049;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --border-color: #dcdcdc;
+    --active-nav-color: #4caf50;
+}
+
+/* Tema Oscuro */
+body.dark-mode {
+    --bg-color: #1a1a1a;
+    --app-bg-color: #2c2c2c;
+    --text-color: #f0f0f0;
+    --display-bg: #222222;
+    --button-bg: #3a3a3a;
+    --button-hover-bg: #4a4a4a;
+    --op-button-bg: #5c4a3a;
+    --op-button-hover-bg: #6c5a4a;
+    --equals-button-bg: #5a9c5d;
+    --equals-button-hover-bg: #6ab86e;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --border-color: #444444;
+    --active-nav-color: #5a9c5d;
+}
+
+/* Estilos Generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.app-container {
+    background-color: var(--app-bg-color);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px var(--shadow-color);
+    width: 95%;
+    max-width: 400px;
+    padding: 20px;
+    transition: background-color 0.3s;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+#theme-switcher {
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+nav {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+nav button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1em;
+    color: var(--text-color);
+    border-bottom: 3px solid transparent;
+}
+
+nav button.active {
+    border-bottom-color: var(--active-nav-color);
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Calculadora */
+.calculator {
+    display: flex;
+    flex-direction: column;
+}
+
+.display {
+    background-color: var(--display-bg);
+    color: var(--text-color);
+    font-size: 2.5em;
+    padding: 15px 20px;
+    text-align: right;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.buttons button {
+    padding: 20px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.buttons button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+.buttons .op {
+    background-color: var(--op-button-bg);
+}
+.buttons .op:hover {
+    background-color: var(--op-button-hover-bg);
+}
+
+.buttons .equals {
+    grid-column: span 2;
+    background-color: var(--equals-button-bg);
+    color: white;
+}
+.buttons .equals:hover {
+    background-color: var(--equals-button-hover-bg);
+}
+
+.buttons .zero {
+    grid-column: span 2;
+}
+
+
+/* Sección de Juegos */
+.game {
+    padding: 10px;
+    text-align: center;
+}
+.game h2 { margin-top: 0; }
+.game-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+.problem-display {
+    font-size: 2em;
+    font-weight: bold;
+    background-color: var(--display-bg);
+    padding: 15px;
+    border-radius: 10px;
+    width: 80%;
+}
+#game-answer {
+    padding: 10px;
+    font-size: 1.2em;
+    width: 50%;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--app-bg-color);
+    color: var(--text-color);
+}
+#check-answer {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--equals-button-bg);
+    color: white;
+    cursor: pointer;
+}
+#game-feedback {
+    min-height: 1.2em;
+    font-weight: bold;
+}

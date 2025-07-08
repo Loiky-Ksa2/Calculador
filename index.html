@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMCD Cal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Calculadora GG</h1>
+            <button id="theme-switcher">🌙</button>
+        </header>
+
+        <nav>
+            <button id="nav-calculator" class="active">Calculadora</button>
+            <button id="nav-games">Juegos Matemáticos</button>
+        </nav>
+
+        <main>
+            <!-- Sección de la Calculadora -->
+            <section id="calculator-section">
+                <div class="calculator">
+                    <div class="display" id="display">0</div>
+                    <div class="buttons">
+                        <button class="op" data-value="(">(</button>
+                        <button class="op" data-value=")">)</button>
+                        <button class="op" data-value="C">C</button>
+                        <button class="op" data-value="/">÷</button>
+
+                        <button data-value="7">7</button>
+                        <button data-value="8">8</button>
+                        <button data-value="9">9</button>
+                        <button class="op" data-value="*">×</button>
+
+                        <button data-value="4">4</button>
+                        <button data-value="5">5</button>
+                        <button data-value="6">6</button>
+                        <button class="op" data-value="-">−</button>
+                        
+                        <button data-value="1">1</button>
+                        <button data-value="2">2</button>
+                        <button data-value="3">3</button>
+                        <button class="op" data-value="+">+</button>
+
+                        <button class="zero" data-value="0">0</button>
+                        <button data-value=".">.</button>
+                        <button class="equals" data-value="=">=</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección de Juegos -->
+            <section id="games-section" class="hidden">
+                <div class="game">
+                    <h2>Juego: ¿Cuál es el resultado?</h2>
+                    <p>Resuelve la operación lo más rápido que puedas.</p>
+                    <div class="game-content">
+                        <div id="problem" class="problem-display">5 + 8 = ?</div>
+                        <input type="number" id="game-answer" placeholder="Tu respuesta">
+                        <button id="check-answer">Comprobar</button>
+                        <p id="game-feedback"></p>
+                        <p>Puntuación: <span id="score">0</span></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
