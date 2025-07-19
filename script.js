@@ -66,7 +66,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (value === 'C') {
             currentExpression = '0';
-        } else if (value === '=') {
+        } 
+        // --- NUEVO: Lógica para el botón de borrar (DEL) ---
+        else if (value === 'DEL') {
+            if (currentExpression.length > 1 && currentExpression !== 'Error') {
+                // Elimina el último carácter de la expresión
+                currentExpression = currentExpression.slice(0, -1);
+            } else {
+                // Si solo queda un dígito o es un error, resetea a '0'
+                currentExpression = '0';
+            }
+        }
+        // --------------------------------------------------
+        else if (value === '=') {
             try {
                 // El corazón de la calculadora: llamar al evaluador recursivo
                 const result = evaluate(currentExpression);
@@ -106,9 +118,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (consume() !== ')') throw new Error('Paréntesis no cerrado');
                 return result;
             } else if (token === '-') { // Manejo de números negativos
-                return -parseFactor();
+                if(tokens[index - 2] === undefined || ['+','-','*','/','('].includes(tokens[index-2])){
+                     return -parseFactor();
+                }
+                // Si no, es una resta y ya se manejó en parseExpression
+                index--; // devolvemos el token '-' para que lo procese parseExpression
+                return parseFloat(peek());
             } else {
-                return parseFloat(token);
+                 if (token === undefined) throw new Error("Expresión inesperada");
+                 return parseFloat(token);
             }
         }
 
@@ -201,5 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // Iniciar el juego al cargar la página (o al cambiar a la pestaña)
-    generateNewProblem();
+    if(!gamesSection.classList.contains('hidden')) {
+       generateNewProblem();
+    }
 });
